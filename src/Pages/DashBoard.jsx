@@ -2,59 +2,69 @@ import { useState } from 'react';
 import { DndContext } from '@dnd-kit/core';
 import { Column } from '../Components/Column';
 import { COLUMNS, INITIAL_TASKS } from '../Data/DATA';
+import { IoIosSearch } from 'react-icons/io';
 
 export default function DashBoard() {
-  const [tasks, setTasks] = useState(INITIAL_TASKS);
+    const [tasks, setTasks] = useState(INITIAL_TASKS);
+    const [searchQuery, setSearchQuery] = useState(''); 
 
-  function handleDragEnd(event) {
-    const { active, over } = event;
+    function handleDragEnd(event) {
+        const { active, over } = event;
 
-    if (!over) return;
+        if (!over) return;
 
-    const taskId = active.id;
-    const newStatus = over.id;
+        const taskId = active.id;
+        const newStatus = over.id;
 
-    // Define the order of columns
-    const columnOrder = ['TODO', 'IN_PROGRESS', 'DONE'];
+        const columnOrder = ['TODO', 'IN_PROGRESS', 'DONE'];
+        const currentTask = tasks.find((task) => task.id === taskId);
+        const currentStatus = currentTask?.status;
+        const currentIndex = columnOrder.indexOf(currentStatus);
+        const newIndex = columnOrder.indexOf(newStatus);
 
-    // Find the current status of the task
-    const currentTask = tasks.find((task) => task.id === taskId);
-    const currentStatus = currentTask?.status;
-
-    // Find the index of current and new statuses
-    const currentIndex = columnOrder.indexOf(currentStatus);
-    const newIndex = columnOrder.indexOf(newStatus);
-
-    // Allow only step-by-step movement (to the next immediate column)
-    if (newIndex === currentIndex + 1) {
-      setTasks(() =>
-        tasks.map((task) =>
-          task.id === taskId
-            ? {
-                ...task,
-                status: newStatus,
-              }
-            : task,
-        ),
-      );
-    }
-  }
-
-  return (
-    <div className="p-4 md:pt-10">
-      <div className="flex flex-wrap gap-3">
-        <DndContext onDragEnd={handleDragEnd}>
-          {COLUMNS.map((column) => {
-            return (
-              <Column
-                key={column.id}
-                column={column}
-                tasks={tasks.filter((task) => task.status === column.id)}
-              />
+        if (newIndex === currentIndex + 1) {
+            setTasks(() =>
+                tasks.map((task) =>
+                    task.id === taskId
+                        ? { ...task, status: newStatus }
+                        : task,
+                ),
             );
-          })}
-        </DndContext>
-      </div>
-    </div>
-  );
+        }
+    }
+
+    const filteredTasks = tasks.filter((task) =>
+        task.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    return (
+        <div className="p-4 md:pt-10">
+            <h2 className='font-semibold text-3xl text-zinc-800 '>Board</h2>
+
+            <div className="flex items-center gap-4 pt-3 w-full">
+                <div className="max-w-sm w-full px-3 rounded-lg flex border items-center">
+                    <input
+                        type="text"
+                        placeholder='Search...'
+                        className='w-full py-3'
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)} 
+                    />
+                    <IoIosSearch className='text-xl text-zinc-600' />
+                </div>
+            </div>
+
+            <div className="flex flex-wrap gap-3 pt-8">
+                <DndContext onDragEnd={handleDragEnd}>
+                    {COLUMNS.map((column) => (
+                        <Column
+                            key={column.id}
+                            column={column}
+                            tasks={filteredTasks.filter((task) => task.status === column.id)}
+                        />
+                    ))}
+                </DndContext>
+            </div>
+        </div>
+    );
 }
