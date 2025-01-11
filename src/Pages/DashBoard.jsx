@@ -42,7 +42,7 @@ export default function DashBoard() {
 
   return (
     <div className="p-4 md:pt-10">
-      <div className="flex gap-3">
+      <div className="flex flex-wrap gap-3">
         <DndContext onDragEnd={handleDragEnd}>
           {COLUMNS.map((column) => {
             return (
