@@ -1,6 +1,6 @@
 # Todo List
 
-This repository contains a simple todo list application.
+This repository contains a todo list application.
 
 ## Cloning the Repository
 
@@ -16,8 +16,4 @@ This project integrates with Jira for issue tracking. Make sure to configure you
 
 ## Hosting
 
-The application is hosted on [Your Hosting Platform](https://jira-111.netlify.app/).
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+The application is hosted on [jira-111](https://jira-111.netlify.app/).
