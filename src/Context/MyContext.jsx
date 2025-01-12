@@ -3,11 +3,11 @@ import { createContext, useEffect, useState } from 'react';
 export const SlidebarContext = createContext(null);
 
 export const SlidebarProvider = ({ children }) => {
-    const [slidebarOpen, setSlidebarOpen] = useState(window.innerWidth >= 1000);
+    const [slidebarOpen, setSlidebarOpen] = useState(window.innerWidth >= 1024);
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth < 1000) {
+            if (window.innerWidth < 1024) {
                 setSlidebarOpen(false);
             } else {
                 setSlidebarOpen(true);
