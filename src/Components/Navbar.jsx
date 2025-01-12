@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router'
+import { Link, useLocation } from 'react-router'
 import profilePhoto from "../assets/profilePhoto.jpg"
 import logo from "../assets/logo.png"
+import { USER_DATA } from '../Data/DATA'
 
 const Navbar = () => {
     const [isOpenProfile, setIsOpenProfile] = useState(false)
     const profileRef = useRef(null)
+    const { state } = useLocation();
+    const role = state?.role || 'user'; // Default to 'user' if no role is provided
 
+    const user = USER_DATA.find(user => user.role.toLowerCase() === role.toLowerCase());
+    
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (profileRef.current && !profileRef.current.contains(event.target)) {
@@ -39,7 +44,7 @@ const Navbar = () => {
                         className="p-2 w-[7rem] myShadow fixed fadeIn right-14 top-16 z-30 bg-white rounded-md"
                     >
                         <img src={profilePhoto} className='w-full px-2 h-full mx-auto rounded-full' alt="" />
-                        <h2 className='font-medium p-1 text-center text-lg text-zinc-600'>Jessie</h2>
+                        <h2 className='font-medium p-1 text-center text-sm text-zinc-800 !leading-tight'> {user ? `${user.firstName} ${user.lastName}` : "John Smith"}</h2>
                         <div className="w-full border-b my-1"></div>
                         <Link to={"/"} className="bg-red-200 block text-red-800 text-center p-2 rounded-md mt-2">
                             Logout

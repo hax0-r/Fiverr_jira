@@ -72,3 +72,19 @@ export const COLUMNS = [
   { id: 'Demo', title: 'Demo' },
   { id: 'DONE', title: 'Done' },
 ];
+
+export const USER_DATA = [
+  {
+    id:1,
+    firstName: "Daniel",
+    lastName: "Serrano",
+    role: "Admin"
+  },
+  {
+    id:2,
+    firstName: "John",
+    lastName: "Smith",
+    role: "Viewer"
+  }
+
+]

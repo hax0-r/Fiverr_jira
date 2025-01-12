@@ -6,15 +6,12 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [signup, setSignup] = useState(false);
-    const [role, setRole] = useState('');
     const navigate = useNavigate();
 
     const handleLogin = () => {
         if (username === 'admin' && password === 'admin') {
-            setRole('admin');
             navigate('/board', { state: { role: 'admin' } });
         } else if (username === 'user' && password === 'user') {
-            setRole('user');
             navigate('/board', { state: { role: 'user' } });
         } else {
             toast.error('Invalid credentials');
