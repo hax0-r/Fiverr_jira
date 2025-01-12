@@ -22,7 +22,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className='flex items-center justify-between p-3 md:px-10 shadow-md'>
+            <div className='flex items-center fixed top-0 left-0 w-full bg-white z-10 justify-between p-3 md:px-10 shadow-md'>
                 <Link to={"/dashboard"} className='text-zinc-600 font-semibold text-xl'>Jira Clone</Link>
                 <div
                     onClick={() => setIsOpenProfile(!isOpenProfile)}
@@ -35,7 +35,7 @@ const Navbar = () => {
                 isOpenProfile && (
                     <div
                         ref={profileRef}
-                        className="p-2 w-[7rem] myShadow absolute fadeIn right-14 bg-white rounded-md"
+                        className="p-2 w-[7rem] myShadow absolute fadeIn right-14 top-16 z-20 bg-white rounded-md"
                     >
                         <img src={profilePhoto} className='w-full px-2 h-full mx-auto rounded-full' alt="" />
                         <h2 className='font-medium p-1 text-center text-lg text-zinc-600'>Jessie</h2>
