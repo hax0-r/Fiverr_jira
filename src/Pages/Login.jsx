@@ -12,10 +12,10 @@ const Login = () => {
     const handleLogin = () => {
         if (username === 'admin' && password === 'admin') {
             setRole('admin');
-            navigate('/dashboard', { state: { role: 'admin' } });
+            navigate('/board', { state: { role: 'admin' } });
         } else if (username === 'user' && password === 'user') {
             setRole('user');
-            navigate('/dashboard', { state: { role: 'user' } });
+            navigate('/board', { state: { role: 'user' } });
         } else {
             toast.error('Invalid credentials');
         }
