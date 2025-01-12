@@ -1,14 +1,14 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
 import Login from '../Pages/Login'
-import DashBoard from '../Pages/DashBoard'
+import Board from '../Pages/Board'
 
 const Router = () => {
     return (
         <div>
             <Routes>
                 <Route path="/" element={<Login />} />
-                <Route path="/dashboard" element={<DashBoard />} />
+                <Route path="/board" element={<Board />} />
             </Routes>
         </div>
     )

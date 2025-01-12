@@ -4,13 +4,13 @@ import { Column } from '../Components/Column';
 import { COLUMNS, INITIAL_TASKS } from '../Data/DATA';
 import { IoIosSearch } from 'react-icons/io';
 import { FaSortDown } from 'react-icons/fa';
-import Sidebar from '../Components/Sidebar';
 import { toast } from 'react-toastify';
 import { useLocation } from 'react-router-dom';
 
-export default function DashBoard() {
+export default function Board() {
     const { state } = useLocation();
     const role = state?.role || 'user'; // Default to 'user' if no role is provided
+
 
     const [tasks, setTasks] = useState(INITIAL_TASKS);
     const [searchQuery, setSearchQuery] = useState('');
@@ -65,12 +65,11 @@ export default function DashBoard() {
     });
 
     return (
-        <div className="flex w-full">
-            <Sidebar />
-            <div className="p-4 md:pt-24 w-[calc(100%-20rem)] ml-auto">
+        <div className="">
+            <div className="px-3">
                 <h2 className="font-semibold text-3xl text-zinc-800">Board</h2>
 
-                <div className="flex items-center gap-4 pt-3 w-full">
+                <div className="flex items-center md:gap-4 gap-2 pt-3 w-full">
                     {/* Search Input */}
                     <div className="max-w-sm w-full px-3 rounded-lg flex border items-center">
                         <input
@@ -83,36 +82,36 @@ export default function DashBoard() {
                         <IoIosSearch className="text-xl text-zinc-600" />
                     </div>
 
-                    <section className="select-none">
-                    <div className=" flex min-h-16 px-4 py-2">
-                        <span className="rounded-full  bg-red-400 h-8 w-8 sm:h-14 sm:w-14 p-2 flex justify-center items-center border">
-                            MA
-                        </span>
-                        <span className="rounded-full -ml-4 z-20 bg-green-400 h-8 w-8 sm:h-14 sm:w-14 p-2 flex justify-center items-center border">
-                            GA
-                        </span>
-                        <span className="rounded-full  -ml-4 z-20 bg-gray-200  h-8 w-8 sm:h-14 sm:w-14 p-2 flex justify-center items-center border">
-                            CD
-                        </span>
-                        <span className="rounded-full  -ml-4 z-20 bg-blue-400  h-8 w-8 sm:h-14 sm:w-14 flex justify-center items-center border">
-                            CD
-                        </span>
-                        {/* <span className="rounded-full  -ml-4 z-20 bg-green-800 h-8 w-8 sm:h-14 sm:w-14  flex justify-center items-center border">
+                    <section className="select-none md:block hidden">
+                        <div className=" flex min-h-16 px-4 py-2">
+                            <span className="rounded-full  bg-red-400 h-8 w-8 sm:h-14 sm:w-14 p-2 flex justify-center items-center border">
+                                MA
+                            </span>
+                            <span className="rounded-full -ml-4 z-20 bg-green-400 h-8 w-8 sm:h-14 sm:w-14 p-2 flex justify-center items-center border">
+                                GA
+                            </span>
+                            <span className="rounded-full  -ml-4 z-20 bg-gray-200  h-8 w-8 sm:h-14 sm:w-14 p-2 flex justify-center items-center border">
+                                CD
+                            </span>
+                            <span className="rounded-full  -ml-4 z-20 bg-blue-400  h-8 w-8 sm:h-14 sm:w-14 flex justify-center items-center border">
+                                CD
+                            </span>
+                            {/* <span className="rounded-full  -ml-4 z-20 bg-green-800 h-8 w-8 sm:h-14 sm:w-14  flex justify-center items-center border">
                             <img
                                 className="w-full h-full rounded-full"
                                 src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHx1c2VyfGVufDB8MHx8fDE2OTk0NjA4OTV8MA&ixlib=rb-4.0.3&q=80&w=1080"
                             />
                         </span> */}
-                        <span className="rounded-full  -ml-4 z-20 bg-zinc-100  h-8 w-8 sm:h-14 sm:w-14 flex justify-center items-center border">
-                            11+
-                        </span>
-                    </div>
-                </section>
+                            <span className="rounded-full  -ml-4 z-20 bg-zinc-100  h-8 w-8 sm:h-14 sm:w-14 flex justify-center items-center border">
+                                11+
+                            </span>
+                        </div>
+                    </section>
 
                     {/* Tag Dropdown */}
                     <div className="relative inline-block w-32">
                         <div
-                            className="p-3 rounded-lg flex justify-between items-center border bg-white cursor-pointer"
+                            className="p-3 rounded-lg flex justify-between text-nowrap items-center border bg-white cursor-pointer"
                             onClick={() => setIsOpen((prev) => !prev)}
                         >
                             {selected}
@@ -126,7 +125,7 @@ export default function DashBoard() {
                                 {options.map((option, index) => (
                                     <li
                                         key={index}
-                                        className="px-3 py-2 transition-all duration-500 hover:bg-gray-100 cursor-pointer"
+                                        className="px-3 text-nowrap py-2 transition-all duration-500 hover:bg-gray-100 cursor-pointer"
                                         onClick={() => handleSelect(option)}
                                     >
                                         {option}
