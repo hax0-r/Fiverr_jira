@@ -31,8 +31,11 @@ const App = () => {
       }
 
       <div className="flex w-full">
-        <Sidebar />
-        <div className={`pt-24 overflow-hidden ${slidebarOpen ? "w-[calc(100%-18rem)]" : "w-[calc(100%-2rem)]"} transition-all duration-500  ml-auto`}>
+        {
+          pathname !== '/' && (
+            <Sidebar />
+          )}
+        <div className={`${pathname !== "/" && "pt-24"} overflow-hidden ${slidebarOpen ? "w-[calc(100%-18rem)]" : "w-[calc(100%-2rem)]"} transition-all duration-500  ml-auto`}>
           <Router />
         </div>
       </div>
