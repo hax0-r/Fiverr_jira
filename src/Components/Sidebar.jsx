@@ -15,15 +15,15 @@ const  Sidebar = () => {
       </div>
       <div className={`relative  overflow-hidden ${slidebarOpen ? "opacity-100" : "opacity-0"} transition-all duration-500`}>
         <div className="px-5 pt-24">
-          <div className="flex items-center  gap-3">
+          {/* <div className="flex items-center  gap-3">
             <img src={logo} alt="" className='h-9' />
             <div className="">
               <h2 className='font-semibold text-lg text-nowrap'>Jira Clone</h2>
               <p className='text-sm text-zinc-700 text-nowrap'>Software project</p>
             </div>
-          </div>
+          </div> */}
 
-          <ul className='mt-10'>
+          <ul className='mt-8'>
             <li> <Link className={`flex mb-1 items-center gap-1.5 bg-[#e9ebee] p-3 ${pathname === "/board" && "text-[#0c66e4]"}  font-medium rounded-lg transition-all duration-500`}><MdKeyboardCommandKey className='text-lg' />
               Board</Link></li>
           </ul>

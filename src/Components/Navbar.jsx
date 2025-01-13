@@ -46,7 +46,7 @@ const Navbar = () => {
                         <img src={profilePhoto} className='w-full px-2 h-full mx-auto rounded-full' alt="" />
                         <h2 className='font-medium p-1 text-center text-sm text-zinc-800 !leading-tight'> {user ? `${user.firstName} ${user.lastName}` : "John Smith"}</h2>
                         <div className="w-full border-b my-1"></div>
-                        <Link to={"/"} className="bg-red-200 block text-red-800 text-center p-2 rounded-md mt-2">
+                        <Link to={"/"} className="bg-red-200 transition-all duration-500 hover:bg-red-300 block text-red-800 text-center p-2 rounded-md mt-2">
                             Logout
                         </Link>
                     </div>

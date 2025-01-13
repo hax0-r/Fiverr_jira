@@ -6,6 +6,7 @@ import { IoIosSearch } from 'react-icons/io';
 import { FaSortDown } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { useLocation } from 'react-router-dom';
+import UserProfiles from '../Components/UserProfiles';
 
 export default function Board() {
     const { state } = useLocation();
@@ -55,8 +56,27 @@ export default function Board() {
                     task.id === taskId ? { ...task, status: newStatus } : task,
                 ),
             );
+
+            // ========= Format status and show success toast =========
+            const formatStatus = (status) => {
+                return status
+                    .toLowerCase()
+                    .split('_')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' ');
+            };
+            toast.success(
+                `Task "${currentTask.title}" moved from "${formatStatus(currentStatus)}" to "${formatStatus(newStatus)}"`
+            );
+        } else if (newIndex < currentIndex) {
+            // ========= Show error toast for reverse movement =========
+            toast.error(
+                `Reverse movement not allowed!`
+            );
         }
     };
+
+
 
     const filteredTasks = tasks.filter((task) => {
         const matchesSearch = task.title.toLowerCase().includes(searchQuery.toLowerCase());
@@ -69,7 +89,7 @@ export default function Board() {
             <div className="px-3">
                 <h2 className="font-semibold text-3xl text-zinc-800">Board</h2>
 
-                <div className="flex items-center md:gap-4 gap-2 pt-3 w-full">
+                <div className="flex flex-wrap items-center md:gap-4 gap-2 pt-3 w-full">
                     {/* Search Input */}
                     <div className="max-w-sm w-full px-3 rounded-lg flex border items-center">
                         <input
@@ -82,31 +102,7 @@ export default function Board() {
                         <IoIosSearch className="text-xl text-zinc-600" />
                     </div>
 
-                    <section className="select-none md:block hidden">
-                        <div className=" flex min-h-16 px-4 py-2">
-                            <span className="rounded-full  bg-red-400 h-8 w-8 sm:h-14 sm:w-14 p-2 flex justify-center items-center border">
-                                MA
-                            </span>
-                            <span className="rounded-full -ml-4 z-20 bg-green-400 h-8 w-8 sm:h-14 sm:w-14 p-2 flex justify-center items-center border">
-                                GA
-                            </span>
-                            <span className="rounded-full  -ml-4 z-20 bg-gray-200  h-8 w-8 sm:h-14 sm:w-14 p-2 flex justify-center items-center border">
-                                CD
-                            </span>
-                            <span className="rounded-full  -ml-4 z-20 bg-blue-400  h-8 w-8 sm:h-14 sm:w-14 flex justify-center items-center border">
-                                CD
-                            </span>
-                            {/* <span className="rounded-full  -ml-4 z-20 bg-green-800 h-8 w-8 sm:h-14 sm:w-14  flex justify-center items-center border">
-                            <img
-                                className="w-full h-full rounded-full"
-                                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHx1c2VyfGVufDB8MHx8fDE2OTk0NjA4OTV8MA&ixlib=rb-4.0.3&q=80&w=1080"
-                            />
-                        </span> */}
-                            <span className="rounded-full  -ml-4 z-20 bg-zinc-100  h-8 w-8 sm:h-14 sm:w-14 flex justify-center items-center border">
-                                11+
-                            </span>
-                        </div>
-                    </section>
+                    <UserProfiles />
 
                     {/* Tag Dropdown */}
                     <div className="relative inline-block w-32">

@@ -75,16 +75,63 @@ export const COLUMNS = [
 
 export const USER_DATA = [
   {
-    id:1,
+    id: 1,
     firstName: "Daniel",
     lastName: "Serrano",
     role: "Admin"
   },
   {
-    id:2,
+    id: 2,
     firstName: "John",
     lastName: "Smith",
     role: "Viewer"
+  },
+  {
+    id: 3,
+    firstName: "Emily",
+    lastName: "Johnson",
+    role: "Viewer"
+  },
+  {
+    id: 4,
+    firstName: "Michael",
+    lastName: "Brown",
+    role: "Viewer"
+  },
+  {
+    id: 5,
+    firstName: "Sophia",
+    lastName: "Garcia",
+    role: "Viewer"
+  },
+  {
+    id: 6,
+    firstName: "David",
+    lastName: "Wilson",
+    role: "Viewer"
+  },
+  {
+    id: 7,
+    firstName: "Olivia",
+    lastName: "Martinez",
+    role: "Viewer"
+  },
+  {
+    id: 8,
+    firstName: "James",
+    lastName: "Taylor",
+    role: "Viewer"
+  },
+  {
+    id: 9,
+    firstName: "Emma",
+    lastName: "Harris",
+    role: "Viewer"
+  },
+  {
+    id: 10,
+    firstName: "Liam",
+    lastName: "Clark",
+    role: "Viewer"
   }
-
-]
+];
