@@ -26,7 +26,6 @@ const App = () => {
           <Navbar />
         )
       }
-
       <Router />
       <ToastContainer />
     </>

@@ -17,12 +17,16 @@ const getRandomColor = () => {
     return colors[randomIndex];
 };
 
-const UserProfiles = () => {
+const UserProfiles = ({ selectedTag }) => {
     const [showAll, setShowAll] = useState(false);
 
-    // Get the first four users and the remaining users
-    const visibleUsers = USER_DATA.slice(0, 4);
-    const remainingUsers = USER_DATA.slice(4);
+    // Filter users based on the selected tag
+    const filteredUsers = selectedTag === 'All Tags'
+        ? USER_DATA
+        : USER_DATA.filter((user) => user.tag === parseInt(selectedTag.split(' ')[1]));
+
+    const visibleUsers = filteredUsers.slice(0, 4);
+    const remainingUsers = filteredUsers.slice(4);
 
     const handleClick = () => {
         setShowAll(true);
@@ -46,6 +50,7 @@ const UserProfiles = () => {
                             </span>
                         </div>
                     ))}
+
                     {showAll && remainingUsers.map((user) => (
                         <div key={user.id} className='relative group'>
                             <p className='-ml-4 z-20 text-sm hidden text-nowrap fadeIn absolute left-0 -top-7 group-hover:block'>
@@ -60,6 +65,7 @@ const UserProfiles = () => {
                             </span>
                         </div>
                     ))}
+
                     {/* Show the "2+" span if there are more than 4 users */}
                     {!showAll && remainingUsers.length > 0 && (
                         <div className='relative group'>
@@ -81,19 +87,3 @@ const UserProfiles = () => {
 };
 
 export default UserProfiles;
-
-
-
-
-
-
-
-
-
-
-{/* <span className="rounded-full  -ml-4 z-20 bg-green-800 h-8 w-8 sm:h-14 sm:w-14  flex justify-center items-center border">
-                <img
-                    className="w-full h-full rounded-full"
-                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxfHx1c2VyfGVufDB8MHx8fDE2OTk0NjA4OTV8MA&ixlib=rb-4.0.3&q=80&w=1080"
-                />
-            </span> */}

@@ -78,60 +78,70 @@ export const USER_DATA = [
     id: 1,
     firstName: "Daniel",
     lastName: "Serrano",
-    role: "Admin"
+    role: "Admin",
+    tag: 1
   },
   {
     id: 2,
     firstName: "John",
     lastName: "Smith",
-    role: "Viewer"
+    role: "Viewer",
+    tag: 2
   },
   {
     id: 3,
     firstName: "Emily",
     lastName: "Johnson",
-    role: "Viewer"
+    role: "Viewer",
+    tag: 3
   },
   {
     id: 4,
     firstName: "Michael",
     lastName: "Brown",
-    role: "Viewer"
+    role: "Viewer",
+    tag: 3
   },
   {
     id: 5,
     firstName: "Sophia",
     lastName: "Garcia",
-    role: "Viewer"
+    role: "Viewer",
+    tag: 4
   },
   {
     id: 6,
     firstName: "David",
     lastName: "Wilson",
-    role: "Viewer"
+    role: "Viewer",
+    tag: 4
   },
   {
     id: 7,
     firstName: "Olivia",
     lastName: "Martinez",
-    role: "Viewer"
+    role: "Viewer",
+    tag: 1
   },
   {
     id: 8,
     firstName: "James",
     lastName: "Taylor",
-    role: "Viewer"
+    role: "Viewer",
+    tag: 1
   },
   {
     id: 9,
     firstName: "Emma",
     lastName: "Harris",
-    role: "Viewer"
+    role: "Viewer",
+    tag: 1
   },
   {
     id: 10,
     firstName: "Liam",
     lastName: "Clark",
-    role: "Viewer"
+    role: "Viewer",
+    tag: 1
   }
 ];

@@ -3,22 +3,19 @@ import { DndContext } from '@dnd-kit/core';
 import { Column } from '../Components/Column';
 import { COLUMNS, INITIAL_TASKS } from '../Data/DATA';
 import { IoIosSearch } from 'react-icons/io';
-import { FaSortDown } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { useLocation } from 'react-router-dom';
 import UserProfiles from '../Components/UserProfiles';
+import TagsDropdown from '../Components/TagsDropdown';
 
 export default function Board() {
     const { state } = useLocation();
     const role = state?.role || 'user'; // Default to 'user' if no role is provided
 
-
     const [tasks, setTasks] = useState(INITIAL_TASKS);
     const [searchQuery, setSearchQuery] = useState('');
-    const [selected, setSelected] = useState('All Tags');
-    const [isOpen, setIsOpen] = useState(false);
+    const [selectedTag, setSelectedTag] = useState('All Tags');
 
-    const options = ['All Tags', 'Tag 1', 'Tag 2', 'Tag 3', 'Tag 4'];
     const tagMapping = {
         'Tag 1': 1,
         'Tag 2': 2,
@@ -26,9 +23,8 @@ export default function Board() {
         'Tag 4': 4,
     };
 
-    const handleSelect = (option) => {
-        setSelected(option);
-        setIsOpen(false);
+    const handleSelectTag = (option) => {
+        setSelectedTag(option);
     };
 
     const handleDragEnd = (event) => {
@@ -62,25 +58,21 @@ export default function Board() {
                 return status
                     .toLowerCase()
                     .split('_')
-                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                     .join(' ');
             };
             toast.success(
-                `Task "${currentTask.title}" moved from "${formatStatus(currentStatus)}" to "${formatStatus(newStatus)}"`
+                `Task "${currentTask.title}" moved from "${formatStatus(currentStatus)}" to "${formatStatus(newStatus)}"`,
             );
         } else if (newIndex < currentIndex) {
             // ========= Show error toast for reverse movement =========
-            toast.error(
-                `Reverse movement not allowed!`
-            );
+            toast.error("Reverse movement not allowed!");
         }
     };
 
-
-
     const filteredTasks = tasks.filter((task) => {
         const matchesSearch = task.title.toLowerCase().includes(searchQuery.toLowerCase());
-        const matchesTag = selected === 'All Tags' || task.tag === tagMapping[selected];
+        const matchesTag = selectedTag === 'All Tags' || task.tag === tagMapping[selectedTag];
         return matchesSearch && matchesTag;
     });
 
@@ -102,34 +94,10 @@ export default function Board() {
                         <IoIosSearch className="text-xl text-zinc-600" />
                     </div>
 
-                    <UserProfiles />
+                    <UserProfiles selectedTag={selectedTag} />
 
                     {/* Tag Dropdown */}
-                    <div className="relative inline-block w-32">
-                        <div
-                            className="p-3 rounded-lg flex justify-between text-nowrap items-center border bg-white cursor-pointer"
-                            onClick={() => setIsOpen((prev) => !prev)}
-                        >
-                            {selected}
-                            <div className="pb-2">
-                                <FaSortDown className="text-gray-500" />
-                            </div>
-                        </div>
-
-                        {isOpen && (
-                            <ul className="absolute fadeIn bg-white border rounded-lg w-full mt-1 shadow-md">
-                                {options.map((option, index) => (
-                                    <li
-                                        key={index}
-                                        className="px-3 text-nowrap py-2 transition-all duration-500 hover:bg-gray-100 cursor-pointer"
-                                        onClick={() => handleSelect(option)}
-                                    >
-                                        {option}
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
+                    <TagsDropdown selectedTag={selectedTag} onSelect={handleSelectTag} />
                 </div>
 
                 {/* Task Columns */}
@@ -149,3 +117,4 @@ export default function Board() {
         </div>
     );
 }
+
