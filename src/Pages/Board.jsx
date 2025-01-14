@@ -35,7 +35,10 @@ export default function Board() {
 
         const { active, over } = event;
 
-        if (!over) return;
+        if (!over) {
+            return;
+        }
+
 
         const taskId = active.id;
         const newStatus = over.id;
@@ -46,14 +49,13 @@ export default function Board() {
         const currentIndex = columnOrder.indexOf(currentStatus);
         const newIndex = columnOrder.indexOf(newStatus);
 
-        if (newIndex === currentIndex + 1) {
+        if (newIndex > currentIndex) {
             setTasks(() =>
                 tasks.map((task) =>
                     task.id === taskId ? { ...task, status: newStatus } : task,
                 ),
             );
 
-            // ========= Format status and show success toast =========
             const formatStatus = (status) => {
                 return status
                     .toLowerCase()
@@ -61,14 +63,15 @@ export default function Board() {
                     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                     .join(' ');
             };
+
             toast.success(
                 `Task "${currentTask.title}" moved from "${formatStatus(currentStatus)}" to "${formatStatus(newStatus)}"`,
             );
         } else if (newIndex < currentIndex) {
-            // ========= Show error toast for reverse movement =========
             toast.error("Reverse movement not allowed!");
         }
     };
+
 
     const filteredTasks = tasks.filter((task) => {
         const matchesSearch = task.title.toLowerCase().includes(searchQuery.toLowerCase());
