@@ -39,7 +39,7 @@ const UserProfiles = () => {
                                 {user.lastName}
                             </p>
                             <span
-                                className={`rounded-full -ml-4 z-20 group-hover:z-50 ${getRandomColor()} h-8 w-8 sm:h-14 sm:w-14 p-2 flex justify-center items-center border`}
+                                className={`rounded-full -ml-4 z-20 group-hover:z-50 ${getRandomColor()} h-8 w-8 sm:h-[3.2rem] sm:w-[3.2rem] p-2 flex justify-center items-center border`}
                             >
                                 {user.firstName.charAt(0).toUpperCase()}
                                 {user.lastName.charAt(0).toUpperCase()}
@@ -53,7 +53,7 @@ const UserProfiles = () => {
                                 {user.lastName}
                             </p>
                             <span
-                                className={`rounded-full -ml-4 z-20 group-hover:z-50 ${getRandomColor()} h-8 w-8 sm:h-14 sm:w-14 p-2 flex justify-center items-center border`}
+                                className={`rounded-full -ml-4 z-20 group-hover:z-50 ${getRandomColor()} h-8 w-8 sm:h-[3.2rem] sm:w-[3.2rem] p-2 flex justify-center items-center border`}
                             >
                                 {user.firstName.charAt(0).toUpperCase()}
                                 {user.lastName.charAt(0).toUpperCase()}
@@ -67,7 +67,7 @@ const UserProfiles = () => {
                                 Remaining Users
                             </p>
                             <span
-                                className="rounded-full -ml-4 z-20 bg-zinc-50 h-8 w-8 sm:h-14 sm:w-14 p-2 flex justify-center items-center border cursor-pointer"
+                                className="rounded-full -ml-4 z-20 bg-zinc-50 h-8 w-8 sm:h-[3.2rem] sm:w-[3.2rem] p-2 flex justify-center items-center border cursor-pointer"
                                 onClick={handleClick}
                             >
                                 {remainingUsers.length}+ {/* Displays the number of remaining users */}

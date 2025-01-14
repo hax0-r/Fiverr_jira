@@ -85,8 +85,8 @@ export default function Board() {
     });
 
     return (
-        <div className="">
-            <div className="px-3">
+        <div className="pt-24 md:px-6 px-4 pb-5">
+            <div className="">
                 <h2 className="font-semibold text-3xl text-zinc-800">Board</h2>
 
                 <div className="flex flex-wrap items-center md:gap-4 gap-2 pt-3 w-full">

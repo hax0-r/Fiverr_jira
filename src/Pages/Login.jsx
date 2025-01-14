@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 
 const Login = () => {
@@ -25,7 +25,7 @@ const Login = () => {
     return (
 
         <>
-            <div className="lg:w-[calc(100%-18rem)] w-[calc(100%-2rem)] flex flex-col items-center justify-center min-h-screen ">
+            <div className=" forslidebar-lg:w-[calc(100%-18rem)] forslidebar-w-[calc(100%-2rem)] flex flex-col items-center justify-center min-h-screen ">
                 {
                     !signup && (
                         <h2 className='text-center font-semibold text-3xl'>Welcome Back</h2>
