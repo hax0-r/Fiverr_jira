@@ -22,7 +22,7 @@ export function TaskCard({ task }) {
         ref={setNodeRef}
         {...listeners}
         {...attributes}
-        className="cursor-grab rounded-lg bg-white p-4 shadow-sm hover:shadow-md"
+        className="cursor-grab w-full rounded-lg bg-white p-4 shadow-sm hover:shadow-md"
         style={style}
       >
         <h3 className="font-medium text-[#172b4d]">{task.title}</h3>

@@ -101,7 +101,7 @@ export default function Board() {
                 </div>
 
                 {/* Task Columns */}
-                <div className="flex flex-wrap gap-3 pt-8">
+                <div className="flex md:flex-row flex-col overflow-x-auto max-w-[98%] w-full gap-3 pt-8">
                     <DndContext onDragEnd={handleDragEnd}>
                         {COLUMNS.map((column, idx) => (
                             <Column

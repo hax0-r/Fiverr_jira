@@ -10,8 +10,8 @@ export function Column({ column, tasks, idx }) {
   const taskCount = tasks.filter((task) => task.status === column.id).length;
 
   return (
-    <div className="flex w-80 flex-col rounded-lg bg-[#f7f8f9] p-3">
-      <div className="flex mb-4 items-center justify-between">
+    <div className="flex  !w-80 flex-col rounded-lg bg-[#f7f8f9] p-3">
+      <div className="flex w-full mb-4 items-center justify-between">
         <h2 className=" font-medium text-[#69758b]">{column.title} <span className='text-xs text-zinc-400'> ({taskCount})</span></h2>
         {
           idx === 0 && (
@@ -19,7 +19,7 @@ export function Column({ column, tasks, idx }) {
           )
         }
       </div>
-      <div ref={setNodeRef} className="flex flex-1 flex-col gap-3">
+      <div ref={setNodeRef} className="flex w-full flex-col gap-3">
         {tasks.map((task) => {
           return <TaskCard key={task.id} task={task} />;
         })}
