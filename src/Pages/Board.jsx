@@ -49,7 +49,7 @@ export default function Board() {
         const currentIndex = columnOrder.indexOf(currentStatus);
         const newIndex = columnOrder.indexOf(newStatus);
 
-        if (newIndex > currentIndex) {
+        if (newIndex === currentIndex + 1) {
             setTasks(() =>
                 tasks.map((task) =>
                     task.id === taskId ? { ...task, status: newStatus } : task,
