@@ -9,17 +9,28 @@ const Login = () => {
     const navigate = useNavigate();
 
     const handleLogin = () => {
+
+        if (!username || !password) {
+            toast.error('Please fill in all fields');
+            return
+        }
+
+
         if (username === 'admin' && password === 'admin') {
             navigate('/board', { state: { role: 'admin' } });
+            toast.success('Login successful');
+            localStorage.setItem("isUserLogin", true)
         } else if (username === 'user' && password === 'user') {
             navigate('/board', { state: { role: 'user' } });
+            toast.success('Login successful');
+            localStorage.setItem("isUserLogin", true)
         } else {
             toast.error('Invalid credentials');
         }
     };
 
     const handleSignup = () => {
-
+        // signup code here
     }
 
     return (
@@ -34,7 +45,7 @@ const Login = () => {
                 <form className="p-4 max-w-sm w-full mx-auto mt-5">
                     <label htmlFor="email" className='font-medium text-zinc-700'>Email</label>
                     <input
-                        type="email"
+                        type="text"
                         required
                         id='email'
                         placeholder="Email"

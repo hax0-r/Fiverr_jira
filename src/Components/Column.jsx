@@ -10,7 +10,8 @@ export function Column({ column, tasks, idx }) {
   const taskCount = tasks.filter((task) => task.status === column.id).length;
 
   return (
-    <div className="flex !w-80 flex-col rounded-lg bg-[#f7f8f9] p-3">
+    <div className="flex w-80 flex-col rounded-lg bg-[#f7f8f9] p-3">
+      <div className="w-[18.5rem]"></div>
       <div className="flex w-full mb-4 items-center justify-between">
         <h2 className="font-medium text-[#69758b]">
           {column.title} <span className="text-xs text-zinc-400"> ({taskCount})</span>

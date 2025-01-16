@@ -62,6 +62,13 @@ export const INITIAL_TASKS = [
     status: 'Demo',
     tag: 4
   },
+  {
+    id: '10',
+    title: 'Final',
+    description: 'Present the final product to the client for approval.',
+    status: 'Demo',
+    tag: 4
+  },
 ];
 
 export const COLUMNS = [
